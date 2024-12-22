@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://b2lvm6lqxq3ss"
+path="res://.godot/imported/Blocking Move 005.wav-28ffc11978e2be65bf9c7901e7f71f24.sample"
+
+[deps]
+
+source_file="res://audio/sfx/Blocking Move 005.wav"
+dest_files=["res://.godot/imported/Blocking Move 005.wav-28ffc11978e2be65bf9c7901e7f71f24.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://byjhadgf7o41j"
+path="res://.godot/imported/LOOP_Exploring the Depths.wav-16af6f0ab6c52166918200db08c48230.sample"
+
+[deps]
+
+source_file="res://audio/music/LOOP_Exploring the Depths.wav"
+dest_files=["res://.godot/imported/LOOP_Exploring the Depths.wav-16af6f0ab6c52166918200db08c48230.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

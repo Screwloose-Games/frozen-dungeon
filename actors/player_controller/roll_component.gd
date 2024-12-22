@@ -19,8 +19,8 @@ var initial_position: Vector2 = Vector2.ZERO
 func _physics_process(delta: float) -> void:
   if is_rolling:
     roll(delta)
-  if Input.is_action_just_pressed("roll"):
-    start_rolling()
+  #if Input.is_action_just_pressed("roll"):
+    #start_rolling()
 
 func start_rolling():
     if is_rolling:

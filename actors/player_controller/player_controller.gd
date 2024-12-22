@@ -1,15 +1,16 @@
+# PlayerController.gd
 extends CharacterBody2D
-
 class_name PlayerController
 
-# Agreed on speed 30?
-
-@export var attack_time: float = 0.5
-@export_range(0.0, 400.0) var SPEED: float = 50.0
+@export_range(0.0, 400.0) var speed: float = 50.0
 @onready var animated_sprite_2d: AnimatedSprite2D = %AnimatedSprite2D
 @onready var interact_area = %InteractArea
-@onready var roll_component: RollAbilityComponent = %RollComponent
+@onready var roll_component = %Roll
 @onready var attack_animated_sprite_2d: AnimatedSprite2D = %AttackAnimatedSprite2D
+
+# Variables
+var last_facing_direction: Vector2 = Vector2.RIGHT
+var input_direction: Vector2 = Vector2.ZERO
 
 enum PlayerState {
   IDLE,
@@ -27,48 +28,41 @@ var can_attack: bool = true:
     return not is_attacking
 
 
-func _ready() -> void:
-  animated_sprite_2d.play("run")
 
 func _physics_process(delta):
-    if roll_component.is_rolling:
-        return
-    var input_direction = Input.get_vector("left", "right", "up", "down")
-    if input_direction and can_move:
-        if not is_attacking and not animated_sprite_2d.is_playing():
-            animated_sprite_2d.play("run")
-        velocity = input_direction * SPEED
-    else:
-      if not is_attacking:
-          animated_sprite_2d.pause()
-      velocity = lerp(velocity, Vector2.ZERO, 0.1)
+    # Handle player input
+    input_direction = Input.get_vector("left", "right", "up", "down")
 
+    # Handle movement and roll
+    if not roll_component.is_rolling:
+        handle_movement_input()
+
+    # Pass through velocity to move_and_slide
     move_and_slide()
 
-func blow_fire():
-  var translation = Vector2(24, -20) 
-  animated_sprite_2d.play.call_deferred("fire")
-  var local_fire: AnimatedSprite2D = attack_animated_sprite_2d.duplicate()
-  attack_animated_sprite_2d.add_sibling.call_deferred(local_fire)
-  local_fire.set_global_transform.call_deferred(animated_sprite_2d.global_transform)
-  local_fire.set_global_position.call_deferred(animated_sprite_2d.global_position + translation)
-  local_fire.top_level = true
-  local_fire.play.call_deferred("fire")
-  local_fire.set_visible.call_deferred(true)
-  await local_fire.animation_finished
-  local_fire.queue_free.call_deferred()
+func handle_movement_input():
+    # Handle movement when not rolling
+    if input_direction != Vector2.ZERO:
+        last_facing_direction = input_direction.normalized()
+        velocity = input_direction * speed  # Example walk speed
+    else:
+        velocity = Vector2.ZERO
 
-func attack():
-  animated_sprite_2d.stop()
-  blow_fire()
-  #await get_tree().create_timer(attack_time).timeout
-  await animated_sprite_2d.animation_finished
-  animated_sprite_2d.stop()
-  is_attacking = false
-  #animated_sprite_2d.play("run")
+func should_roll() -> bool:
+    # Check if roll action is pressed
+    return Input.is_action_just_pressed("roll")
 
-func _input(event: InputEvent) -> void:
-  if can_attack:
-    if event.is_action_pressed("attack"):
-      is_attacking = true
-      attack()
+func get_roll_direction() -> Vector2:
+    # Return the current input direction for rolling
+    return input_direction.normalized()
+
+func get_last_facing_direction() -> Vector2:
+    return last_facing_direction
+
+func on_roll_start():
+    # Optional: Disable other inputs during roll
+    velocity = Vector2.ZERO
+
+func on_roll_end():
+    # Optional: Reset state after roll
+    velocity = Vector2.ZERO

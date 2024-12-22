@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://guv3efwuyerr"
+path="res://.godot/imported/Pixel Waterfall Far Loop.wav-1c3bdf39e556ee8516d8fcaffd0c76e4.sample"
+
+[deps]
+
+source_file="res://audio/sfx/Pixel Waterfall Far Loop.wav"
+dest_files=["res://.godot/imported/Pixel Waterfall Far Loop.wav-1c3bdf39e556ee8516d8fcaffd0c76e4.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

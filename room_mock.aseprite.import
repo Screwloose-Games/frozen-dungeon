@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://c6y6u2f4p5k3"
+path="res://.godot/imported/room_mock.aseprite-be307ebaf2b4f24a0533820bc9551acd.res"
+
+[deps]
+
+source_file="res://room_mock.aseprite"
+dest_files=["res://.godot/imported/room_mock.aseprite-be307ebaf2b4f24a0533820bc9551acd.res"]
+
+[params]
+

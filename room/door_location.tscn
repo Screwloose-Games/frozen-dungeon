@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://q31a061uubpx"]
+
+[ext_resource type="Script" path="res://room/door_location.gd" id="1_ns617"]
+[ext_resource type="Texture2D" uid="uid://cfeufjrwvwm0c" path="res://pillar.png" id="2_y0yja"]
+[ext_resource type="PackedScene" uid="uid://cqpre5r3mx80j" path="res://room/doorway/doorway.tscn" id="3_4l7vq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bohh8"]
+size = Vector2(53, 36)
+
+[node name="TopDoorLocation" type="Node2D"]
+position = Vector2(329, 62)
+script = ExtResource("1_ns617")
+
+[node name="BlockedDoorwayTop" type="StaticBody2D" parent="."]
+unique_name_in_owner = true
+use_parent_material = true
+position = Vector2(-17, -4)
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BlockedDoorwayTop"]
+use_parent_material = true
+position = Vector2(3.5, -8)
+shape = SubResource("RectangleShape2D_bohh8")
+
+[node name="BlockedDoorwaySprite2D" type="Sprite2D" parent="BlockedDoorwayTop"]
+use_parent_material = true
+position = Vector2(9, -11)
+texture = ExtResource("2_y0yja")
+
+[node name="Doorway" parent="." instance=ExtResource("3_4l7vq")]
+unique_name_in_owner = true
+process_mode = 4
+visible = false
+position = Vector2(-8, -14)
+is_open = false

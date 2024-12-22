@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://cc3cgeu25r0wk"]
+
+[ext_resource type="Script" path="res://autoloads/music_player.gd" id="1_oloma"]
+[ext_resource type="AudioStream" uid="uid://bcq0srcciabks" path="res://audio/music/LOOP_Mysterious Cave.wav" id="2_qkcpa"]
+
+[node name="MusicPlayer" type="Node"]
+script = ExtResource("1_oloma")
+dungeon_music = ExtResource("2_qkcpa")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+bus = &"Music"
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+bus = &"Music"

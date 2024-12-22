@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://rgqveseqb4ek"]
+
+[ext_resource type="PackedScene" uid="uid://qrt8xbxvxh61" path="res://room/base_room.tscn" id="1_ajsne"]
+[ext_resource type="Shader" path="res://shaders/replace_colors.gdshader" id="8_iwjth"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3b2jc"]
+resource_local_to_scene = true
+shader = ExtResource("8_iwjth")
+shader_parameter/original_colors = PackedColorArray(0.176471, 0.105882, 0.117647, 1, 0.380392, 0.152941, 0.129412, 1, 0.72549, 0.270588, 0.113725, 1, 0.945098, 0.392157, 0.121569, 1, 0.980392, 0.839216, 1, 1)
+shader_parameter/replace_colors = PackedColorArray(0.152941, 0.537255, 0.803922, 1, 0.541176, 0.768627, 0.764706, 1, 0.541176, 0.768627, 0.764706, 1, 1, 1, 1, 1, 0.980392, 0.839216, 1, 1)
+shader_parameter/strength = 0.0
+
+[node name="TestRoom01" instance=ExtResource("1_ajsne")]
+up = false
+right = false
+down = false
+left = false
+
+[node name="TopDoorLocation" parent="Walls" index="1"]
+is_door = false
+
+[node name="RightDoorLocation" parent="Walls" index="2"]
+is_door = false
+
+[node name="BottomDoorLocation" parent="Walls" index="3"]
+is_door = false
+
+[node name="LeftDoorLocation" parent="Walls" index="4"]
+is_door = false
+
+[node name="BeaverEnemy" parent="." index="3"]
+material = SubResource("ShaderMaterial_3b2jc")

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://hc4x3pumjdno"
+path="res://.godot/imported/Magic Attack Windy C.wav-4953ed37b8c68efef24b7c59ca74ae11.sample"
+
+[deps]
+
+source_file="res://audio/sfx/Magic Attack Windy C.wav"
+dest_files=["res://.godot/imported/Magic Attack Windy C.wav-4953ed37b8c68efef24b7c59ca74ae11.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

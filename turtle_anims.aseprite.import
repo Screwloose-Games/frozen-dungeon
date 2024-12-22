@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://evcv684rtg5k"
+path="res://.godot/imported/turtle_anims.aseprite-b46f40685c43bee29ccdb94e32e9b031.res"
+
+[deps]
+
+source_file="res://turtle_anims.aseprite"
+dest_files=["res://.godot/imported/turtle_anims.aseprite-b46f40685c43bee29ccdb94e32e9b031.res"]
+
+[params]
+

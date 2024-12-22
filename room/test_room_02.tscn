@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://ilggjq5b11ah"]
+
+[ext_resource type="Texture2D" uid="uid://gjnxmmjc3fd8" path="res://environment/dungeon-bg-example.png" id="1_heyno"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_xyul0"]
+font_size = 72
+
+[node name="TestRoom01" type="Node2D"]
+position = Vector2(320, 180)
+
+[node name="ColorRect" type="ColorRect" parent="."]
+clip_children = 1
+offset_right = 640.0
+offset_bottom = 360.0
+
+[node name="Dungeon-bg-example" type="Sprite2D" parent="ColorRect"]
+position = Vector2(285, 172)
+texture = ExtResource("1_heyno")
+
+[node name="Label" type="Label" parent="ColorRect"]
+layout_mode = 0
+offset_left = 136.0
+offset_top = 121.0
+offset_right = 506.0
+offset_bottom = 179.0
+text = "Test Room 02"
+label_settings = SubResource("LabelSettings_xyul0")

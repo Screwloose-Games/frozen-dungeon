@@ -1,0 +1,227 @@
+[gd_scene load_steps=27 format=3 uid="uid://buhbro0io0jmn"]
+
+[ext_resource type="Script" path="res://ui/level_overlay/pause_menu.gd" id="1_67ty4"]
+[ext_resource type="Texture2D" path="res://assets/art/ui/buttons and sliders/back_static_small.png" id="1_yjyb4"]
+[ext_resource type="Texture2D" path="res://assets/art/ui/buttons and sliders/back_pressed_small.png" id="2_jsfsg"]
+[ext_resource type="Shader" path="res://ui/main_menu_water_bg.gdshader" id="2_xh8ii"]
+[ext_resource type="Theme" path="res://addons/silent_wolf/assets/themes/sw_theme.tres" id="3_43u8x"]
+[ext_resource type="Texture2D" path="res://assets/art/ui/buttons and sliders/startgame_static.png" id="3_mc7sy"]
+[ext_resource type="Texture2D" path="res://assets/art/ui/buttons and sliders/startgame_pressed.png" id="4_dlj0t"]
+[ext_resource type="Script" path="res://ui/level_overlay/pause_menu_button.gd" id="4_m6qdy"]
+[ext_resource type="FontFile" uid="uid://ckll30bntmg2q" path="res://assets/art/ui/fonts/MORN FROGY.otf" id="4_p5laj"]
+[ext_resource type="FontFile" uid="uid://coi0wueg5va1d" path="res://assets/art/ui/fonts/Winkle-Regular.otf" id="5_31oie"]
+[ext_resource type="Texture2D" path="res://assets/art/ui/buttons and sliders/startgame_hover.png" id="5_xmljf"]
+[ext_resource type="Texture2D" path="res://assets/art/ui/buttons and sliders/options_static.png" id="7_4exwk"]
+[ext_resource type="Texture2D" path="res://assets/art/ui/buttons and sliders/general_ui_bg.png" id="7_q1jmk"]
+[ext_resource type="Texture2D" path="res://assets/art/ui/buttons and sliders/paused_page_header.png" id="8_2ek3o"]
+[ext_resource type="Texture2D" path="res://assets/art/ui/buttons and sliders/options_pressed.png" id="8_kn5wx"]
+[ext_resource type="Texture2D" path="res://assets/art/ui/buttons and sliders/options_hover.png" id="9_kgkiu"]
+[ext_resource type="Texture2D" path="res://assets/art/ui/buttons and sliders/reset_button_static.png" id="11_f0ptj"]
+[ext_resource type="Texture2D" path="res://assets/art/ui/buttons and sliders/reset_button_pressed.png" id="12_nmi6k"]
+[ext_resource type="Texture2D" path="res://assets/art/ui/buttons and sliders/reset_button_hover.png" id="13_0xjaw"]
+[ext_resource type="Texture2D" path="res://assets/art/ui/buttons and sliders/main_menu_button_static.png" id="14_k5tpu"]
+[ext_resource type="PackedScene" uid="uid://tl80aws2fga4" path="res://autoloads/ui_audio.tscn" id="14_kg1o1"]
+[ext_resource type="Texture2D" path="res://assets/art/ui/buttons and sliders/main_menu_button_pressed.png" id="15_bkg6p"]
+[ext_resource type="Texture2D" path="res://assets/art/ui/buttons and sliders/main_menu_button_hover.png" id="16_avvrm"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_5ayhc"]
+font = ExtResource("5_31oie")
+font_size = 32
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_o2q7k"]
+shader = ExtResource("2_xh8ii")
+shader_parameter/background_color = Color(0, 0.720236, 0.720236, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_0rx8k"]
+font = ExtResource("4_p5laj")
+font_size = 64
+
+[node name="PauseMenu" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_67ty4")
+
+[node name="MobilePauseButton" type="TextureButton" parent="."]
+unique_name_in_owner = true
+z_index = 2
+texture_filter = 4
+custom_minimum_size = Vector2(50, 50)
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -180.0
+offset_top = -57.0
+grow_horizontal = 0
+grow_vertical = 0
+texture_normal = ExtResource("3_mc7sy")
+texture_pressed = ExtResource("4_dlj0t")
+texture_hover = ExtResource("5_xmljf")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="ColorRect" type="ColorRect" parent="MobilePauseButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -18.5
+offset_right = 65.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+color = Color(0.929412, 0.964706, 0.941176, 1)
+
+[node name="Label" type="Label" parent="MobilePauseButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -7.0
+offset_right = 20.0
+offset_bottom = 7.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+text = "PAUSE"
+label_settings = SubResource("LabelSettings_5ayhc")
+
+[node name="PauseMenuScreen" type="Control" parent="."]
+process_mode = 2
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("3_43u8x")
+
+[node name="WaterBG" type="ColorRect" parent="PauseMenuScreen"]
+material = SubResource("ShaderMaterial_o2q7k")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = -145.0
+offset_bottom = 134.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="PauseMenuScreen"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_q1jmk")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="MarginContainer" type="MarginContainer" parent="PauseMenuScreen"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -169.0
+offset_top = -190.0
+offset_right = 169.0
+offset_bottom = 190.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_top = 12
+
+[node name="PausedHeader" type="TextureRect" parent="PauseMenuScreen/MarginContainer"]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+texture = ExtResource("8_2ek3o")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PauseMenuScreen/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="TitleLabel" type="Label" parent="PauseMenuScreen/MarginContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+text = "PAUSED
+"
+label_settings = SubResource("LabelSettings_0rx8k")
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="ResetButton" type="TextureButton" parent="PauseMenuScreen/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+texture_filter = 4
+custom_minimum_size = Vector2(100, 75)
+layout_mode = 2
+action_mode = 0
+texture_normal = ExtResource("11_f0ptj")
+texture_pressed = ExtResource("12_nmi6k")
+texture_hover = ExtResource("13_0xjaw")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="MainMenuButton" type="TextureButton" parent="PauseMenuScreen/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+texture_filter = 4
+custom_minimum_size = Vector2(100, 75)
+layout_mode = 2
+action_mode = 0
+texture_normal = ExtResource("14_k5tpu")
+texture_pressed = ExtResource("15_bkg6p")
+texture_hover = ExtResource("16_avvrm")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="OptionsButton" type="TextureButton" parent="PauseMenuScreen/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+texture_filter = 4
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+action_mode = 0
+texture_normal = ExtResource("7_4exwk")
+texture_pressed = ExtResource("8_kn5wx")
+texture_hover = ExtResource("9_kgkiu")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="BackButton" type="TextureButton" parent="PauseMenuScreen"]
+unique_name_in_owner = true
+texture_filter = 4
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -176.0
+offset_right = -71.0
+offset_bottom = 125.0
+grow_horizontal = 0
+action_mode = 0
+texture_normal = ExtResource("1_yjyb4")
+texture_pressed = ExtResource("2_jsfsg")
+texture_hover = ExtResource("1_yjyb4")
+stretch_mode = 3
+
+[node name="ui_audio" parent="." instance=ExtResource("14_kg1o1")]
+unique_name_in_owner = true
+process_mode = 3
+
+[node name="PauseMenuButton" type="Node" parent="."]
+unique_name_in_owner = true
+process_mode = 3
+script = ExtResource("4_m6qdy")

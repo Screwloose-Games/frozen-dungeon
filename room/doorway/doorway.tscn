@@ -1,0 +1,144 @@
+[gd_scene load_steps=15 format=3 uid="uid://cqpre5r3mx80j"]
+
+[ext_resource type="Script" path="res://room/doorway_area_2d.gd" id="1_15t7w"]
+[ext_resource type="Texture2D" uid="uid://doog3h7cddw5a" path="res://room/door_anim.png" id="2_ja28h"]
+[ext_resource type="Texture2D" uid="uid://ba5cym4v7cnq8" path="res://door.png" id="2_o5rpa"]
+[ext_resource type="AudioStream" uid="uid://bbwx3xs5suots" path="res://audio/sfx/Blocking Move 004.wav" id="4_8tfdp"]
+[ext_resource type="AudioStream" uid="uid://b2lvm6lqxq3ss" path="res://audio/sfx/Blocking Move 005.wav" id="4_tmy83"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4ybtk"]
+size = Vector2(28, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_23qsk"]
+atlas = ExtResource("2_ja28h")
+region = Rect2(56, 31, 28, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ij54p"]
+atlas = ExtResource("2_ja28h")
+region = Rect2(28, 31, 28, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5i0ws"]
+atlas = ExtResource("2_ja28h")
+region = Rect2(0, 31, 28, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5moqt"]
+atlas = ExtResource("2_ja28h")
+region = Rect2(56, 0, 28, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oe2a8"]
+atlas = ExtResource("2_ja28h")
+region = Rect2(28, 0, 28, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yg2tb"]
+atlas = ExtResource("2_ja28h")
+region = Rect2(0, 0, 28, 31)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6n8iq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_23qsk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ij54p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5i0ws")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5moqt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oe2a8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yg2tb")
+}],
+"loop": false,
+"name": &"close",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yg2tb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oe2a8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5moqt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5i0ws")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ij54p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_23qsk")
+}],
+"loop": false,
+"name": &"open",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vx8w4"]
+size = Vector2(25, 34)
+
+[node name="DoorwayArea2D" type="Area2D"]
+use_parent_material = true
+collision_layer = 0
+script = ExtResource("1_15t7w")
+is_open = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 16.5)
+shape = SubResource("RectangleShape2D_4ybtk")
+
+[node name="OpenDoorwaySprite2D" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+use_parent_material = true
+texture = ExtResource("2_o5rpa")
+
+[node name="DoorAnimatedSprite2D" type="AnimatedSprite2D" parent="OpenDoorwaySprite2D"]
+unique_name_in_owner = true
+texture_filter = 1
+use_parent_material = true
+position = Vector2(0, 14)
+sprite_frames = SubResource("SpriteFrames_6n8iq")
+animation = &"open"
+frame = 5
+frame_progress = 1.0
+metadata/_aseprite_wizard_interface_config_ = {
+"pending_changes": {}
+}
+metadata/_aseprite_wizard_config_ = {
+"layers": [],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"should_round_fps": true,
+"slice": "",
+"source": "res://door_anim.aseprite"
+}
+metadata/_aseprite_wizard_source_file_hash_ = "6078f1c519ce11e70c8c8426c6ec275d"
+
+[node name="TeleportTargetMarker2D" type="Marker2D" parent="."]
+position = Vector2(0, -155)
+
+[node name="ClosedDoorStaticBody2D" type="StaticBody2D" parent="."]
+unique_name_in_owner = true
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ClosedDoorStaticBody2D"]
+position = Vector2(-0.5, 12)
+shape = SubResource("RectangleShape2D_vx8w4")
+
+[node name="OpenAudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("4_8tfdp")
+
+[node name="CloseAudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("4_tmy83")

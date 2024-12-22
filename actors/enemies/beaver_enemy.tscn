@@ -1,0 +1,204 @@
+[gd_scene load_steps=26 format=3 uid="uid://dnxrpkvqoa214"]
+
+[ext_resource type="Shader" path="res://shaders/replace_colors.gdshader" id="1_74vtd"]
+[ext_resource type="Script" path="res://actors/enemies/minion/minion.gd" id="1_dbt5x"]
+[ext_resource type="Texture2D" uid="uid://dfyy3kaqwyv4d" path="res://actors/enemies/beaver_anims.png" id="3_0b1wu"]
+[ext_resource type="Script" path="res://actors/components/hitbox_component.gd" id="4_ekp5a"]
+[ext_resource type="Script" path="res://actors/components/hurtbox_component.gd" id="5_cvkwx"]
+[ext_resource type="Script" path="res://actors/components/health_component.gd" id="6_oxl5j"]
+[ext_resource type="Script" path="res://actors/state/wander_state.gd" id="7_8iktk"]
+[ext_resource type="Script" path="res://actors/state/chase_state.gd" id="7_t3b8m"]
+[ext_resource type="Script" path="res://actors/actor_core.gd" id="8_457qd"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_buidy"]
+resource_local_to_scene = true
+shader = ExtResource("1_74vtd")
+shader_parameter/original_colors = PackedColorArray(0.176471, 0.105882, 0.117647, 1, 0.380392, 0.152941, 0.129412, 1, 0.72549, 0.270588, 0.113725, 1, 0.945098, 0.392157, 0.121569, 1, 0.980392, 0.839216, 1, 1)
+shader_parameter/replace_colors = PackedColorArray(0.152941, 0.537255, 0.803922, 1, 0.541176, 0.768627, 0.764706, 1, 0.541176, 0.768627, 0.764706, 1, 1, 1, 1, 1, 0.980392, 0.839216, 1, 1)
+shader_parameter/strength = 0.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ci6rw"]
+atlas = ExtResource("3_0b1wu")
+region = Rect2(0, 31, 33, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jdoh0"]
+atlas = ExtResource("3_0b1wu")
+region = Rect2(33, 31, 33, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tjdgv"]
+atlas = ExtResource("3_0b1wu")
+region = Rect2(66, 31, 33, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4glro"]
+atlas = ExtResource("3_0b1wu")
+region = Rect2(99, 31, 33, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xvm0a"]
+atlas = ExtResource("3_0b1wu")
+region = Rect2(0, 62, 33, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tkwnk"]
+atlas = ExtResource("3_0b1wu")
+region = Rect2(33, 62, 33, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l01sb"]
+atlas = ExtResource("3_0b1wu")
+region = Rect2(66, 62, 33, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c6y1k"]
+atlas = ExtResource("3_0b1wu")
+region = Rect2(0, 0, 33, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1i7uv"]
+atlas = ExtResource("3_0b1wu")
+region = Rect2(33, 0, 33, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v3sgw"]
+atlas = ExtResource("3_0b1wu")
+region = Rect2(66, 0, 33, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o3fp4"]
+atlas = ExtResource("3_0b1wu")
+region = Rect2(99, 0, 33, 31)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7jk64"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ci6rw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jdoh0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tjdgv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4glro")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xvm0a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tkwnk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l01sb")
+}],
+"loop": true,
+"name": &"bite",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c6y1k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1i7uv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v3sgw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o3fp4")
+}],
+"loop": true,
+"name": &"fly",
+"speed": 10.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_e0ntf"]
+radius = 3.0
+height = 16.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gh25b"]
+radius = 12.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f05lq"]
+size = Vector2(24.5, 24.5)
+
+[node name="BeaverEnemy" type="CharacterBody2D" node_paths=PackedStringArray("initial_state") groups=["Enemy"]]
+material = SubResource("ShaderMaterial_buidy")
+collision_layer = 2
+collision_mask = 11
+script = ExtResource("1_dbt5x")
+speed = 30
+initial_state = NodePath("States/ChaseState")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+texture_filter = 1
+material = SubResource("ShaderMaterial_buidy")
+use_parent_material = true
+sprite_frames = SubResource("SpriteFrames_7jk64")
+animation = &"fly"
+offset = Vector2(0, -16)
+metadata/_aseprite_wizard_interface_config_ = {
+"pending_changes": {}
+}
+metadata/_aseprite_wizard_config_ = {
+"layers": [],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"should_round_fps": true,
+"slice": "",
+"source": "res://beaver_anims.aseprite"
+}
+metadata/_aseprite_wizard_source_file_hash_ = "f9296c8b39bc4d35f660d7555246de79"
+
+[node name="FollowPlayerController" type="Node" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_e0ntf")
+
+[node name="HitBoxComponent" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 32
+script = ExtResource("4_ekp5a")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBoxComponent"]
+visible = false
+position = Vector2(2, -14)
+shape = SubResource("CircleShape2D_gh25b")
+
+[node name="HurtBoxComponent" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 0
+script = ExtResource("5_cvkwx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBoxComponent"]
+visible = false
+position = Vector2(-0.25, -16.25)
+shape = SubResource("RectangleShape2D_f05lq")
+
+[node name="HealthComponent" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("6_oxl5j")
+max_health = 2.0
+
+[node name="States" type="Node" parent="."]
+
+[node name="WanderState" type="Node" parent="States"]
+unique_name_in_owner = true
+script = ExtResource("7_8iktk")
+
+[node name="ChaseState" type="Node" parent="States"]
+unique_name_in_owner = true
+script = ExtResource("7_t3b8m")
+
+[node name="IdleState" type="Node" parent="States"]
+unique_name_in_owner = true
+
+[node name="AttackingState" type="Node" parent="States"]
+unique_name_in_owner = true
+
+[node name="ActorCore" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("8_457qd")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+unique_name_in_owner = true

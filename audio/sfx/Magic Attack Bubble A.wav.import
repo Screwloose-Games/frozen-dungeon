@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://b5mevr3l15mnl"
+path="res://.godot/imported/Magic Attack Bubble A.wav-dbc6361d1f744e48d3fb0c9e7e57ac8a.sample"
+
+[deps]
+
+source_file="res://audio/sfx/Magic Attack Bubble A.wav"
+dest_files=["res://.godot/imported/Magic Attack Bubble A.wav-dbc6361d1f744e48d3fb0c9e7e57ac8a.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

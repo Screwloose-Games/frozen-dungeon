@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://di283dvucvb2h"
+path="res://.godot/imported/Pixel Bubbles 002.wav-49adb510587cd43414fa7b7b8ddd62be.sample"
+
+[deps]
+
+source_file="res://audio/sfx/Pixel Bubbles 002.wav"
+dest_files=["res://.godot/imported/Pixel Bubbles 002.wav-49adb510587cd43414fa7b7b8ddd62be.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

@@ -1,0 +1,161 @@
+[gd_scene load_steps=5 format=3 uid="uid://mt6wwl5rh73l"]
+
+[ext_resource type="Script" path="res://ui/level_overlay/debug_ui_overlay/fps_field.gd" id="1_0c6e1"]
+[ext_resource type="Script" path="res://ui/level_overlay/debug_ui_overlay/debug_ui_overlay.gd" id="1_wv5ek"]
+[ext_resource type="Script" path="res://ui/level_overlay/debug_ui_overlay/camera_smoothing_field.gd" id="2_l2wrs"]
+
+[sub_resource type="Theme" id="Theme_njuhg"]
+Label/constants/outline_size = 5
+Label/fonts/font = null
+LineEdit/constants/outline_size = 2
+
+[node name="DebugUiOverlay" type="CanvasLayer"]
+layer = 9
+script = ExtResource("1_wv5ek")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = SubResource("Theme_njuhg")
+
+[node name="MarginContainer" type="MarginContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 40.0
+grow_horizontal = 0
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+
+[node name="OptionsVBoxContainer" type="VBoxContainer" parent="Control/MarginContainer"]
+layout_mode = 2
+
+[node name="OptionHBoxContainer" type="HBoxContainer" parent="Control/MarginContainer/OptionsVBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="Label" type="Label" parent="Control/MarginContainer/OptionsVBoxContainer/OptionHBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+text = "Camera update function"
+vertical_alignment = 1
+
+[node name="ToggleHBoxContainer" type="HBoxContainer" parent="Control/MarginContainer/OptionsVBoxContainer/OptionHBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 8
+
+[node name="Label" type="Label" parent="Control/MarginContainer/OptionsVBoxContainer/OptionHBoxContainer/ToggleHBoxContainer"]
+layout_mode = 2
+text = "_process"
+
+[node name="CameraProcessButton" type="CheckButton" parent="Control/MarginContainer/OptionsVBoxContainer/OptionHBoxContainer/ToggleHBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="Control/MarginContainer/OptionsVBoxContainer/OptionHBoxContainer/ToggleHBoxContainer"]
+layout_mode = 2
+text = "_pysics_process"
+
+[node name="OptionHBoxContainer4" type="HBoxContainer" parent="Control/MarginContainer/OptionsVBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="Label" type="Label" parent="Control/MarginContainer/OptionsVBoxContainer/OptionHBoxContainer4"]
+layout_mode = 2
+size_flags_vertical = 1
+text = "Camera Smoothing"
+vertical_alignment = 1
+
+[node name="ToggleHBoxContainer" type="HBoxContainer" parent="Control/MarginContainer/OptionsVBoxContainer/OptionHBoxContainer4"]
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 4
+
+[node name="Label" type="Label" parent="Control/MarginContainer/OptionsVBoxContainer/OptionHBoxContainer4/ToggleHBoxContainer"]
+layout_mode = 2
+text = "Pixels"
+
+[node name="CameraSmoothingField" type="LineEdit" parent="Control/MarginContainer/OptionsVBoxContainer/OptionHBoxContainer4/ToggleHBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(50, 20)
+layout_mode = 2
+text = "0"
+placeholder_text = "0 is unlimited"
+virtual_keyboard_type = 2
+clear_button_enabled = true
+script = ExtResource("2_l2wrs")
+
+[node name="OptionHBoxContainer2" type="HBoxContainer" parent="Control/MarginContainer/OptionsVBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="Label" type="Label" parent="Control/MarginContainer/OptionsVBoxContainer/OptionHBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 1
+text = "Physics Interpolation"
+vertical_alignment = 1
+
+[node name="ToggleHBoxContainer" type="HBoxContainer" parent="Control/MarginContainer/OptionsVBoxContainer/OptionHBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 4
+
+[node name="Label" type="Label" parent="Control/MarginContainer/OptionsVBoxContainer/OptionHBoxContainer2/ToggleHBoxContainer"]
+layout_mode = 2
+text = "off"
+
+[node name="PhysicsInterpolationButton" type="CheckButton" parent="Control/MarginContainer/OptionsVBoxContainer/OptionHBoxContainer2/ToggleHBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="Control/MarginContainer/OptionsVBoxContainer/OptionHBoxContainer2/ToggleHBoxContainer"]
+layout_mode = 2
+text = "on"
+
+[node name="OptionHBoxContainer3" type="HBoxContainer" parent="Control/MarginContainer/OptionsVBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="Label" type="Label" parent="Control/MarginContainer/OptionsVBoxContainer/OptionHBoxContainer3"]
+layout_mode = 2
+size_flags_vertical = 1
+text = "Max Frame Rate"
+vertical_alignment = 1
+
+[node name="ToggleHBoxContainer" type="HBoxContainer" parent="Control/MarginContainer/OptionsVBoxContainer/OptionHBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 4
+
+[node name="FpsField" type="LineEdit" parent="Control/MarginContainer/OptionsVBoxContainer/OptionHBoxContainer3/ToggleHBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(50, 20)
+layout_mode = 2
+text = "0"
+placeholder_text = "0 is unlimited"
+virtual_keyboard_type = 2
+clear_button_enabled = true
+script = ExtResource("1_0c6e1")
+
+[node name="CloseInfoLabel" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -189.0
+offset_top = -11.5
+offset_right = -104.0
+offset_bottom = 11.5
+grow_horizontal = 0
+grow_vertical = 2
+text = "Close by pressing: ~"

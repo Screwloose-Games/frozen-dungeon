@@ -1,0 +1,273 @@
+[gd_scene load_steps=12 format=3 uid="uid://cmocf8u7kwf0q"]
+
+[ext_resource type="Script" path="res://ui/main_menu.gd" id="1_q08sm"]
+[ext_resource type="Shader" path="res://ui/main_menu_water_bg.gdshader" id="2_j31rg"]
+[ext_resource type="Theme" uid="uid://8dktess8157a" path="res://ui/menu_button_text.tres" id="2_mtytu"]
+[ext_resource type="Texture2D" uid="uid://dllg7atqt3xsr" path="res://assets/art/ui/buttons and sliders/startgame_static.png" id="3_6286u"]
+[ext_resource type="Texture2D" uid="uid://do0dvs0vvb34l" path="res://assets/art/ui/buttons and sliders/startgame_pressed.png" id="4_pqdwd"]
+[ext_resource type="Texture2D" uid="uid://1tao6s5n6por" path="res://assets/art/ui/buttons and sliders/startgame_hover.png" id="5_6vchf"]
+[ext_resource type="Texture2D" uid="uid://cwupcaicun2wx" path="res://assets/art/ui/buttons and sliders/options_static.png" id="6_kqta0"]
+[ext_resource type="Texture2D" uid="uid://dlhlycspnmff4" path="res://assets/art/ui/buttons and sliders/options_pressed.png" id="7_k5lf3"]
+[ext_resource type="Texture2D" uid="uid://00e7km3f5xyy" path="res://assets/art/ui/buttons and sliders/options_hover.png" id="8_dyuol"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nr7sr"]
+shader = ExtResource("2_j31rg")
+shader_parameter/background_color = Color(0, 0.720236, 0.720236, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_r3w2k"]
+expand_margin_left = 1.0
+expand_margin_top = 50.0
+expand_margin_bottom = 45.0
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="MainMenu" type="CanvasLayer"]
+script = ExtResource("1_q08sm")
+
+[node name="Backgroud" type="ColorRect" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_nr7sr")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = -145.0
+offset_bottom = 134.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_mtytu")
+
+[node name="menu_bg" type="TextureRect" parent="Control"]
+texture_filter = 4
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -622.5
+offset_top = -511.5
+offset_right = 622.5
+offset_bottom = 511.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.3, 0.3)
+pivot_offset = Vector2(622.5, 510.5)
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Main" type="Control" parent="Control/menu_bg"]
+unique_name_in_owner = true
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="start_button" type="TextureButton" parent="Control/menu_bg/Main"]
+unique_name_in_owner = true
+texture_filter = 4
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 339.5
+offset_top = 157.167
+offset_right = 865.5
+offset_bottom = 270.167
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(263, 132.5)
+action_mode = 0
+texture_normal = ExtResource("3_6286u")
+texture_pressed = ExtResource("4_pqdwd")
+texture_hover = ExtResource("5_6vchf")
+ignore_texture_size = true
+stretch_mode = 3
+
+[node name="options_button" type="TextureButton" parent="Control/menu_bg/Main"]
+unique_name_in_owner = true
+texture_filter = 4
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 339.5
+offset_top = 343.167
+offset_right = 865.5
+offset_bottom = 456.167
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(263, 132.5)
+action_mode = 0
+texture_normal = ExtResource("6_kqta0")
+texture_pressed = ExtResource("7_k5lf3")
+texture_hover = ExtResource("8_dyuol")
+ignore_texture_size = true
+stretch_mode = 3
+
+[node name="Options" type="Control" parent="Control/menu_bg"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="master_vol_text" type="Label" parent="Control/menu_bg/Options"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -194.0
+offset_top = -401.0
+offset_right = 196.0
+offset_bottom = -352.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "MASTER VOLUME
+"
+
+[node name="master_vol_slider" type="HSlider" parent="Control/menu_bg/Options"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -146.0
+offset_top = -347.0
+offset_right = 139.0
+offset_bottom = -237.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/slider = SubResource("StyleBoxTexture_r3w2k")
+max_value = 1.0
+step = 0.1
+value = 0.5
+scrollable = false
+
+[node name="sfx_vol_text" type="Label" parent="Control/menu_bg/Options"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.502
+anchor_top = 0.5
+anchor_right = 0.502
+anchor_bottom = 0.5
+offset_left = -144.99
+offset_top = -227.5
+offset_right = 146.01
+offset_bottom = -178.5
+theme = ExtResource("2_mtytu")
+text = "SFX VOLUME
+"
+
+[node name="sfx_vol_slider" type="HSlider" parent="Control/menu_bg/Options"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -142.5
+offset_top = -172.0
+offset_right = 142.5
+offset_bottom = -61.9999
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/slider = SubResource("StyleBoxTexture_r3w2k")
+max_value = 1.0
+step = 0.1
+value = 0.5
+scrollable = false
+
+[node name="music_vol_text" type="Label" parent="Control/menu_bg/Options"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.504
+anchor_top = 0.5
+anchor_right = 0.504
+anchor_bottom = 0.5
+offset_left = -177.48
+offset_top = -46.4999
+offset_right = 178.52
+offset_bottom = 2.50012
+text = "MUSIC VOLUME
+"
+
+[node name="music_vol_slider" type="HSlider" parent="Control/menu_bg/Options"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -146.0
+offset_top = 7.00012
+offset_right = 139.0
+offset_bottom = 117.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/slider = SubResource("StyleBoxTexture_r3w2k")
+max_value = 1.0
+step = 0.1
+value = 0.5
+scrollable = false
+
+[node name="option_back_button" type="TextureButton" parent="Control/menu_bg/Options"]
+unique_name_in_owner = true
+texture_filter = 4
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 222.0
+offset_top = -7.99985
+offset_right = 340.0
+offset_bottom = 105.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(263, 132.5)
+action_mode = 0
+ignore_texture_size = true
+stretch_mode = 3
+
+[connection signal="mouse_entered" from="Control/menu_bg/Main/start_button" to="." method="_on_start_button_mouse_entered"]
+[connection signal="pressed" from="Control/menu_bg/Main/start_button" to="." method="_on_start_button_pressed"]
+[connection signal="button_up" from="Control/menu_bg/Main/options_button" to="." method="_on_options_button_button_up"]
+[connection signal="mouse_entered" from="Control/menu_bg/Main/options_button" to="." method="_on_options_button_mouse_entered"]
+[connection signal="pressed" from="Control/menu_bg/Main/options_button" to="." method="_on_options_button_pressed"]
+[connection signal="drag_started" from="Control/menu_bg/Options/master_vol_slider" to="." method="_on_master_vol_slider_drag_started"]
+[connection signal="mouse_entered" from="Control/menu_bg/Options/master_vol_slider" to="." method="_on_master_vol_slider_mouse_entered"]
+[connection signal="value_changed" from="Control/menu_bg/Options/master_vol_slider" to="." method="_on_master_vol_slider_value_changed"]
+[connection signal="drag_started" from="Control/menu_bg/Options/sfx_vol_slider" to="." method="_on_master_vol_slider_drag_started"]
+[connection signal="mouse_entered" from="Control/menu_bg/Options/sfx_vol_slider" to="." method="_on_master_vol_slider_mouse_entered"]
+[connection signal="value_changed" from="Control/menu_bg/Options/sfx_vol_slider" to="." method="_on_sfx_vol_slider_value_changed"]
+[connection signal="drag_started" from="Control/menu_bg/Options/music_vol_slider" to="." method="_on_master_vol_slider_drag_started"]
+[connection signal="mouse_entered" from="Control/menu_bg/Options/music_vol_slider" to="." method="_on_master_vol_slider_mouse_entered"]
+[connection signal="value_changed" from="Control/menu_bg/Options/music_vol_slider" to="." method="_on_music_vol_slider_value_changed"]
+[connection signal="button_up" from="Control/menu_bg/Options/option_back_button" to="." method="_on_option_back_button_button_up"]
+[connection signal="mouse_entered" from="Control/menu_bg/Options/option_back_button" to="." method="_on_option_back_button_mouse_entered"]
+[connection signal="pressed" from="Control/menu_bg/Options/option_back_button" to="." method="_on_option_back_button_pressed"]

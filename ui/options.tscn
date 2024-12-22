@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://bokx7u0aqk6wa"]
+
+[node name="Options" type="CanvasLayer"]
+
+[node name="menu_bg" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="back" type="TextureButton" parent="menu_bg"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="toggle" type="TextureButton" parent="menu_bg"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0

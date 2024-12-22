@@ -1,0 +1,124 @@
+[gd_scene load_steps=18 format=4 uid="uid://4avl0y4kjj1o"]
+
+[ext_resource type="PackedScene" uid="uid://rgqveseqb4ek" path="res://room/test_room_01.tscn" id="1_4d6wf"]
+[ext_resource type="PackedScene" uid="uid://ilggjq5b11ah" path="res://room/test_room_02.tscn" id="2_74vbi"]
+[ext_resource type="PackedScene" uid="uid://dygbr8dn1haip" path="res://actors/player_controller/player_controller.tscn" id="3_hujuw"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="4_heix2"]
+[ext_resource type="PackedScene" uid="uid://dnxrpkvqoa214" path="res://actors/enemies/beaver_enemy.tscn" id="5_lkbwh"]
+[ext_resource type="Shader" path="res://shaders/replace_colors.gdshader" id="6_77hwq"]
+[ext_resource type="PackedScene" uid="uid://okieoy5lafx2" path="res://actors/enemies/turtle_enemy.tscn" id="7_rj44r"]
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_t2ch5"]
+scenes/1/scene = ExtResource("1_4d6wf")
+scenes/2/scene = ExtResource("2_74vbi")
+
+[sub_resource type="TileSet" id="TileSet_bvunq"]
+tile_offset_axis = 1
+tile_size = Vector2i(640, 360)
+sources/0 = SubResource("TileSetScenesCollectionSource_t2ch5")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_114bb"]
+resource_local_to_scene = true
+shader = ExtResource("6_77hwq")
+shader_parameter/original_colors = PackedColorArray(0.176471, 0.105882, 0.117647, 1, 0.380392, 0.152941, 0.129412, 1, 0.72549, 0.270588, 0.113725, 1, 0.945098, 0.392157, 0.121569, 1, 0.980392, 0.839216, 1, 1)
+shader_parameter/replace_colors = PackedColorArray(0.152941, 0.537255, 0.803922, 1, 0.541176, 0.768627, 0.764706, 1, 0.541176, 0.768627, 0.764706, 1, 1, 1, 1, 1, 0.980392, 0.839216, 1, 1)
+shader_parameter/strength = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sx041"]
+resource_local_to_scene = true
+shader = ExtResource("6_77hwq")
+shader_parameter/original_colors = PackedColorArray(0.176471, 0.105882, 0.117647, 1, 0.380392, 0.152941, 0.129412, 1, 0.72549, 0.270588, 0.113725, 1, 0.945098, 0.392157, 0.121569, 1, 0.980392, 0.839216, 1, 1)
+shader_parameter/replace_colors = PackedColorArray(0.152941, 0.537255, 0.803922, 1, 0.541176, 0.768627, 0.764706, 1, 0.541176, 0.768627, 0.764706, 1, 1, 1, 1, 1, 0.980392, 0.839216, 1, 1)
+shader_parameter/strength = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_eex2p"]
+resource_local_to_scene = true
+shader = ExtResource("6_77hwq")
+shader_parameter/original_colors = PackedColorArray(0.176471, 0.105882, 0.117647, 1, 0.380392, 0.152941, 0.129412, 1, 0.72549, 0.270588, 0.113725, 1, 0.945098, 0.392157, 0.121569, 1, 0.980392, 0.839216, 1, 1)
+shader_parameter/replace_colors = PackedColorArray(0.152941, 0.537255, 0.803922, 1, 0.541176, 0.768627, 0.764706, 1, 0.541176, 0.768627, 0.764706, 1, 1, 1, 1, 1, 0.980392, 0.839216, 1, 1)
+shader_parameter/strength = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_f8b8m"]
+resource_local_to_scene = true
+shader = ExtResource("6_77hwq")
+shader_parameter/original_colors = PackedColorArray(0.176471, 0.105882, 0.117647, 1, 0.380392, 0.152941, 0.129412, 1, 0.72549, 0.270588, 0.113725, 1, 0.945098, 0.392157, 0.121569, 1, 0.980392, 0.839216, 1, 1)
+shader_parameter/replace_colors = PackedColorArray(0.152941, 0.537255, 0.803922, 1, 0.541176, 0.768627, 0.764706, 1, 0.541176, 0.768627, 0.764706, 1, 1, 1, 1, 1, 0.980392, 0.839216, 1, 1)
+shader_parameter/strength = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vaapw"]
+resource_local_to_scene = true
+shader = ExtResource("6_77hwq")
+shader_parameter/original_colors = PackedColorArray(0.176471, 0.105882, 0.117647, 1, 0.380392, 0.152941, 0.129412, 1, 0.72549, 0.270588, 0.113725, 1, 0.945098, 0.392157, 0.121569, 1, 0.980392, 0.839216, 1, 1)
+shader_parameter/replace_colors = PackedColorArray(0.152941, 0.537255, 0.803922, 1, 0.541176, 0.768627, 0.764706, 1, 0.541176, 0.768627, 0.764706, 1, 1, 1, 1, 1, 0.980392, 0.839216, 1, 1)
+shader_parameter/strength = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_53mse"]
+resource_local_to_scene = true
+shader = ExtResource("6_77hwq")
+shader_parameter/original_colors = PackedColorArray(0.176471, 0.105882, 0.117647, 1, 0.380392, 0.152941, 0.129412, 1, 0.72549, 0.270588, 0.113725, 1, 0.945098, 0.392157, 0.121569, 1, 0.980392, 0.839216, 1, 1)
+shader_parameter/replace_colors = PackedColorArray(0.152941, 0.537255, 0.803922, 1, 0.541176, 0.768627, 0.764706, 1, 0.541176, 0.768627, 0.764706, 1, 1, 1, 1, 1, 0.980392, 0.839216, 1, 1)
+shader_parameter/strength = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sw1cn"]
+resource_local_to_scene = true
+shader = ExtResource("6_77hwq")
+shader_parameter/original_colors = PackedColorArray(0.176471, 0.105882, 0.117647, 1, 0.380392, 0.152941, 0.129412, 1, 0.72549, 0.270588, 0.113725, 1, 0.945098, 0.392157, 0.121569, 1, 0.980392, 0.839216, 1, 1)
+shader_parameter/replace_colors = PackedColorArray(0.152941, 0.537255, 0.803922, 1, 0.541176, 0.768627, 0.764706, 1, 0.541176, 0.768627, 0.764706, 1, 1, 1, 1, 1, 0.980392, 0.839216, 1, 1)
+shader_parameter/strength = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xu3k3"]
+resource_local_to_scene = true
+shader = ExtResource("6_77hwq")
+shader_parameter/original_colors = PackedColorArray(0.176471, 0.105882, 0.117647, 1, 0.380392, 0.152941, 0.129412, 1, 0.72549, 0.270588, 0.113725, 1, 0.945098, 0.392157, 0.121569, 1, 0.980392, 0.839216, 1, 1)
+shader_parameter/replace_colors = PackedColorArray(0.152941, 0.537255, 0.803922, 1, 0.541176, 0.768627, 0.764706, 1, 0.541176, 0.768627, 0.764706, 1, 1, 1, 1, 1, 0.980392, 0.839216, 1, 1)
+shader_parameter/strength = 0.0
+
+[node name="Dungeon01" type="Node2D"]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAD/////AAAAAAAAAQD+////AAAAAAAAAQAAAP//AAAAAAAAAQD///7/AAAAAAAAAQD9////AAAAAAAAAQD9//7/AAAAAAAAAQABAP//AAAAAAAAAQABAP7/AAAAAAAAAQABAP3/AAAAAAAAAQD9//3/AAAAAAAAAQA=")
+tile_set = SubResource("TileSet_bvunq")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(-320, -180)
+
+[node name="PhantomCameraHost" type="Node" parent="Camera2D"]
+process_priority = 300
+process_physics_priority = 300
+script = ExtResource("4_heix2")
+
+[node name="PlayerController" parent="." instance=ExtResource("3_hujuw")]
+position = Vector2(-314, -134)
+speed = 75.0
+
+[node name="BeaverEnemy" parent="." instance=ExtResource("5_lkbwh")]
+material = SubResource("ShaderMaterial_114bb")
+position = Vector2(-1560, -152)
+
+[node name="BeaverEnemy2" parent="." instance=ExtResource("5_lkbwh")]
+material = SubResource("ShaderMaterial_sx041")
+position = Vector2(933, -531)
+
+[node name="BeaverEnemy3" parent="." instance=ExtResource("5_lkbwh")]
+material = SubResource("ShaderMaterial_eex2p")
+position = Vector2(947, -167)
+
+[node name="BeaverEnemy4" parent="." instance=ExtResource("5_lkbwh")]
+material = SubResource("ShaderMaterial_f8b8m")
+position = Vector2(-1597, -532)
+
+[node name="TurtleEnemy" parent="." instance=ExtResource("7_rj44r")]
+material = SubResource("ShaderMaterial_vaapw")
+position = Vector2(-1077, -125)
+
+[node name="TurtleEnemy2" parent="." instance=ExtResource("7_rj44r")]
+material = SubResource("ShaderMaterial_53mse")
+position = Vector2(-839, -183)
+
+[node name="TurtleEnemy3" parent="." instance=ExtResource("7_rj44r")]
+material = SubResource("ShaderMaterial_sw1cn")
+position = Vector2(1062, -888)
+
+[node name="TurtleEnemy4" parent="." instance=ExtResource("7_rj44r")]
+material = SubResource("ShaderMaterial_xu3k3")
+position = Vector2(914, -885)

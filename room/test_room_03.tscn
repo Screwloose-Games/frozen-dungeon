@@ -1,0 +1,142 @@
+[gd_scene load_steps=18 format=3 uid="uid://c2h0i58knlvie"]
+
+[ext_resource type="Script" path="res://room/room.gd" id="1_spkpu"]
+[ext_resource type="Texture2D" uid="uid://bxx8jkcttcurm" path="res://hell_walls.png" id="2_3svpy"]
+[ext_resource type="Script" path="res://camera/camera_area.gd" id="2_ksstr"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="2_oiu21"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="3_jbfuw"]
+[ext_resource type="PackedScene" uid="uid://q31a061uubpx" path="res://room/door_location.tscn" id="3_jgxpu"]
+[ext_resource type="PackedScene" uid="uid://dnxrpkvqoa214" path="res://actors/enemies/beaver_enemy.tscn" id="7_nu45d"]
+[ext_resource type="Shader" path="res://shaders/replace_colors.gdshader" id="8_iwjth"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_yp31s"]
+vertices = PackedVector2Array(519, 273, 110.102, 273, 111.898, 91, 519, 91)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(102, 81, 529, 81, 529, 283, 100, 283)])
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xcn65"]
+size = Vector2(259, 29)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lv72r"]
+size = Vector2(320, 29)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pk8mi"]
+size = Vector2(297, 29)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7rs74"]
+size = Vector2(472, 29)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5us0q"]
+size = Vector2(640, 360)
+
+[sub_resource type="Resource" id="Resource_rvvm5"]
+script = ExtResource("3_jbfuw")
+duration = 0.5
+transition = 0
+ease = 2
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3b2jc"]
+resource_local_to_scene = true
+shader = ExtResource("8_iwjth")
+shader_parameter/original_colors = PackedColorArray(0.176471, 0.105882, 0.117647, 1, 0.380392, 0.152941, 0.129412, 1, 0.72549, 0.270588, 0.113725, 1, 0.945098, 0.392157, 0.121569, 1, 0.980392, 0.839216, 1, 1)
+shader_parameter/replace_colors = PackedColorArray(0.152941, 0.537255, 0.803922, 1, 0.541176, 0.768627, 0.764706, 1, 0.541176, 0.768627, 0.764706, 1, 1, 1, 1, 1, 0.980392, 0.839216, 1, 1)
+shader_parameter/strength = 0.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yyrv6"]
+size = Vector2(537, 323)
+
+[node name="TestRoom01" type="Node2D"]
+position = Vector2(-320, -180)
+script = ExtResource("1_spkpu")
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+unique_name_in_owner = true
+navigation_polygon = SubResource("NavigationPolygon_yp31s")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+clip_children = 1
+offset_right = 640.0
+offset_bottom = 360.0
+
+[node name="Walls" type="Node2D" parent="ColorRect"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="ColorRect/Walls"]
+position = Vector2(329, 62)
+collision_layer = 8
+collision_mask = 0
+
+[node name="TopCollisionShape2D" type="CollisionShape2D" parent="ColorRect/Walls/StaticBody2D"]
+position = Vector2(-108.5, -9)
+shape = SubResource("RectangleShape2D_xcn65")
+
+[node name="LeftCollisionShape2D" type="CollisionShape2D" parent="ColorRect/Walls/StaticBody2D"]
+position = Vector2(-244.999, 96)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_lv72r")
+
+[node name="RightCollisionShape2D" type="CollisionShape2D" parent="ColorRect/Walls/StaticBody2D"]
+position = Vector2(231, 104.5)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_pk8mi")
+
+[node name="BottomCollisionShape2D" type="CollisionShape2D" parent="ColorRect/Walls/StaticBody2D"]
+position = Vector2(-2, 245)
+shape = SubResource("RectangleShape2D_7rs74")
+
+[node name="Dungeon-bg-example" type="Sprite2D" parent="ColorRect/Walls/StaticBody2D"]
+position = Vector2(-8, 118)
+texture = ExtResource("2_3svpy")
+
+[node name="TopDoorLocation" parent="ColorRect/Walls" instance=ExtResource("3_jgxpu")]
+unique_name_in_owner = true
+
+[node name="RightDoorLocation" parent="ColorRect/Walls" instance=ExtResource("3_jgxpu")]
+unique_name_in_owner = true
+position = Vector2(550, 188)
+rotation = 1.5708
+direction = 1
+
+[node name="BottomDoorLocation" parent="ColorRect/Walls" instance=ExtResource("3_jgxpu")]
+unique_name_in_owner = true
+position = Vector2(313, 298)
+rotation = 3.14159
+direction = 2
+
+[node name="LeftDoorLocation" parent="ColorRect/Walls" instance=ExtResource("3_jgxpu")]
+unique_name_in_owner = true
+position = Vector2(92, 172)
+rotation = 4.71239
+direction = 3
+
+[node name="Room2Area2D4" type="Area2D" parent="ColorRect" node_paths=PackedStringArray("camera")]
+process_mode = 3
+position = Vector2(320, 180)
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("2_ksstr")
+camera = NodePath("PhantomCamera2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ColorRect/Room2Area2D4"]
+shape = SubResource("RectangleShape2D_5us0q")
+
+[node name="PhantomCamera2D" type="Node2D" parent="ColorRect/Room2Area2D4"]
+script = ExtResource("2_oiu21")
+priority = 2
+snap_to_pixel = true
+tween_resource = SubResource("Resource_rvvm5")
+
+[node name="BeaverEnemy" parent="." instance=ExtResource("7_nu45d")]
+material = SubResource("ShaderMaterial_3b2jc")
+position = Vector2(156, 233)
+
+[node name="EnemyDetector" type="Area2D" parent="."]
+unique_name_in_owner = true
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyDetector"]
+position = Vector2(320.5, 178.5)
+shape = SubResource("RectangleShape2D_yyrv6")
+
+[connection signal="area_entered" from="ColorRect/Room2Area2D4" to="." method="_on_player_entered_room"]
+[connection signal="area_exited" from="ColorRect/Room2Area2D4" to="." method="_on_player_left_room"]

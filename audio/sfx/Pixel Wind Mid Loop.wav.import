@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cm81jhmgm3jbe"
+path="res://.godot/imported/Pixel Wind Mid Loop.wav-4ab93279ec289bed9d533dfd4724f8ed.sample"
+
+[deps]
+
+source_file="res://audio/sfx/Pixel Wind Mid Loop.wav"
+dest_files=["res://.godot/imported/Pixel Wind Mid Loop.wav-4ab93279ec289bed9d533dfd4724f8ed.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
